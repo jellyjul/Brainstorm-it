@@ -1,0 +1,47 @@
+@import "../../styles/vars.scss";
+@import "../../styles/mixins.scss";
+
+.table__container {
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.table__tablewrap {
+    width: 70%;
+
+    margin: 0px auto;
+    border-radius: 15px;
+    border-spacing: 0;
+    line-height: 2em;
+    background-color: white;
+}
+
+.table__header {
+    display: grid;
+    grid-template-columns: repeat(4, 20%) 1fr 1fr;
+    padding: 10px;
+    border-radius: 15px 15px 0 0;
+
+    font-weight: 600;
+    text-align: center;
+
+    border-bottom: 1px solid #fff;
+    background-color: grey;
+    color: #fff;
+}
+
+.table__words {
+    display: grid;
+    grid-template-columns: repeat(4, 20%) 1fr 1fr;
+    padding: 10px;
+
+    font-weight: 600;
+    text-align: center;
+
+    border-bottom: 1px solid #fff;
+    background-color: rgb(234, 230, 230);
+    color: black;
+}
+.table__words {
+    color: black;
+}

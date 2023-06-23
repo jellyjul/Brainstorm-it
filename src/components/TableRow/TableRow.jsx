@@ -1,0 +1,28 @@
+import React from "react";
+import styles from "./tablerow.module.scss"
+import cards from '../../data/table-row.json';
+import TableLine from "../TableLine/TableLine";
+
+export default function TableRow (){
+  return (
+    <div className={styles.table__container}>
+      <div className={styles.table__tablewrap}>
+        <div className={styles.table__header}>
+          <div>English</div>
+          <div>Transcription</div>
+          <div>Russian</div>
+          <div>Tag</div>
+          <div>Edit</div>
+          <div>Delete</div>
+        </div>
+        </div>
+      {cards.map((card,id )=>
+      <TableLine id={card.id} 
+      english={card.english} 
+      transcription= {card.transcription} 
+      russian = {card.russian}
+      tags = {card.tags}
+      tags_json = {card.tags_json}/>)}
+      </div>
+  )
+}

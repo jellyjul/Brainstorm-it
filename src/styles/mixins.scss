@@ -1,0 +1,10 @@
+@mixin button($width, $padding) {
+    width: $width;
+    padding: $padding;
+    text-decoration: none;
+    border: none;
+    border-radius: 15px;
+    &:hover {
+        background-color: $button-light;
+    }
+}
