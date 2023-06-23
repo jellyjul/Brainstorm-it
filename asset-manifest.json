@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Brainstorm-it/static/css/main.190f509c.css",
+    "main.js": "/Brainstorm-it/static/js/main.3c6d9380.js",
+    "static/media/logo.png": "/Brainstorm-it/static/media/logo.110d117ab1cbb67270c7.png",
+    "index.html": "/Brainstorm-it/index.html",
+    "main.190f509c.css.map": "/Brainstorm-it/static/css/main.190f509c.css.map",
+    "main.3c6d9380.js.map": "/Brainstorm-it/static/js/main.3c6d9380.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.190f509c.css",
+    "static/js/main.3c6d9380.js"
+  ]
+}
