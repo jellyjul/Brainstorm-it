@@ -15,12 +15,13 @@ return (
         <h1 className={styles.home__title}>Learn it!</h1>
         <div className={styles.home__about}>The easiest way to make and study flashcards</div>
         {/* <Link to = "/wordlist" className="home__button">Start</Link> */}
-        <button className={styles.home__button}>Start</button>
+        <button className={styles.home__button}>
+            <a className={styles.home__link} href="#wordlist">Start</a></button>
         </div>
 
         </div>
         <div className={styles.area} >
-            <ul className={styles.circles}>
+            {/* <ul className={styles.circles}>
                     <li></li>
                     <li></li>
                     <li></li>
@@ -31,7 +32,7 @@ return (
                     <li></li>
                     <li></li>
                     <li></li>
-            </ul>
+            </ul> */}
         </div >
         <div className={styles.home__row}>
             <div className={styles.home__column}>

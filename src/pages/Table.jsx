@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./tablerow.module.scss"
-import cards from '../../data/table-row.json';
-import TableLine from "../TableLine/TableLine";
+import styles from "../styles/Table.module.scss"
+import cards from '../data/table-row.json';
+import TableLine from "../components/TableLine/TableLine";
 
 export default function TableRow (){
   return (
@@ -22,7 +22,10 @@ export default function TableRow (){
       transcription= {card.transcription} 
       russian = {card.russian}
       tags = {card.tags}
-      tags_json = {card.tags_json}/>)}
+      tags_json = {card.tags_json}
+      />
+      )
+      }
       </div>
   )
 }
