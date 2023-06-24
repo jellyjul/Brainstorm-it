@@ -3,9 +3,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import diary from "../../images/diary.png" 
 import laptop from "../../images/laptop.png" 
 import puzzle from "../../images/puzzle.png"
-
 import styles from "../Home/home.module.scss"
-// import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom"
 
 export default function Home() {
 return (
@@ -14,9 +13,8 @@ return (
         <div className={styles.home__container}>
         <h1 className={styles.home__title}>Learn it!</h1>
         <div className={styles.home__about}>The easiest way to make and study flashcards</div>
-        {/* <Link to = "/wordlist" className="home__button">Start</Link> */}
         <button className={styles.home__button}>
-            <a className={styles.home__link} href="#wordlist">Start</a></button>
+            <NavLink className={styles.home__link} to='/table'>Start</NavLink></button>
         </div>
 
         </div>

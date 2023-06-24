@@ -5,21 +5,22 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import logo from "../../images/logo.png"
 import styles from "../Header/header.module.scss"
+import {NavLink} from "react-router-dom"
 
 
 export default function Header() {
     return (
     <Navbar collapseOnSelect expand="lg">
         <Container>
-        <Navbar.Brand  className={styles.text} href="#home">brainstorm it!<img src={logo} className={styles.logo}></img></Navbar.Brand>
+        <NavLink  className={styles.text} to="/">brainstorm it!<img src={logo} className={styles.logo}></img></NavLink>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#wordlist">Wordlist</Nav.Link>
+            <NavLink className={styles.nav} to='/'>Home</NavLink>
+            <NavLink className={styles.nav}  to='/table'>Wordlist</NavLink>
             </Nav>
             <Nav>
-            <Nav.Link href="#games">Games</Nav.Link>
+            <NavLink className={styles.nav}  to ="/game">Games</NavLink>
             </Nav>
         </Navbar.Collapse>
         </Container>
