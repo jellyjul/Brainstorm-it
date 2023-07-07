@@ -1,6 +1,20 @@
+.game__container {
+    margin: 0 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1000px;
+}
 .container {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    width: 250px;
+    // overflow: hidden;
+    gap: 100px;
+}
+.game__button {
+    margin: 0 5%;
+}
+.game__learnt {
+    display: flex;
     justify-content: center;
 }
