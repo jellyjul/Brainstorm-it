@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/Brainstorm-it/static/css/main.dd5ea443.css",
-    "main.js": "/Brainstorm-it/static/js/main.80b5b71e.js",
+    "main.css": "/Brainstorm-it/static/css/main.75465278.css",
+    "main.js": "/Brainstorm-it/static/js/main.2c353665.js",
     "static/media/logo.png": "/Brainstorm-it/static/media/logo.110d117ab1cbb67270c7.png",
     "index.html": "/Brainstorm-it/index.html",
-    "main.dd5ea443.css.map": "/Brainstorm-it/static/css/main.dd5ea443.css.map",
-    "main.80b5b71e.js.map": "/Brainstorm-it/static/js/main.80b5b71e.js.map"
+    "main.75465278.css.map": "/Brainstorm-it/static/css/main.75465278.css.map",
+    "main.2c353665.js.map": "/Brainstorm-it/static/js/main.2c353665.js.map"
   },
   "entrypoints": [
-    "static/css/main.dd5ea443.css",
-    "static/js/main.80b5b71e.js"
+    "static/css/main.75465278.css",
+    "static/js/main.2c353665.js"
   ]
 }
