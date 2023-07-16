@@ -3,7 +3,8 @@ import styles from "./Card.module.scss";
 import classNames from 'classnames';
 
 
-export default function Card({id, english, transcription, russian, tags, tags_json}) {
+export default function Card(props) {
+    const {english, transcription, russian} = props;
     const [clicked, setClicked] = useState(false);
     const handleChange = () => {
         setClicked(!clicked);
@@ -20,5 +21,11 @@ export default function Card({id, english, transcription, russian, tags, tags_js
             </div>
         </div>
     )
-
 }
+Card.defaultProps = {
+    english : "Sorry, there are no words",
+    transcription : "",
+    russian :  "",
+}
+
+

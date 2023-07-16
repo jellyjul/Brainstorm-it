@@ -1,43 +1,117 @@
 import React, { useState } from "react";
 import Card from "../components/Card/Card";
 import styles from "../styles/game.module.scss"
-import cards from "../data/table-row.json"
+import data from "../data/table-row.json"
 
-export default function Game(){
+export default function Game(props){
 
-const [position,setPosition] = useState(0)
+    const {cardIndex} = props;
+    const [index, setIndex] = useState (cardIndex ? cardIndex : 0); 
+    const [pressed, setPressed] = useState(false);
 
-const onShowPrevious = () => {
-    if (position > 0) {
-        setPosition(position-1)
-    }
-}
+    const handleNext = () => {
+        if (index < data.length - 1) {
+            setIndex(index + 1);
+        }
+    };
+    const handleCheck = () => {  
+        setPressed(!pressed);
+        setTimeout(() => {
+            setPressed(false);
+        }, 4000);  
+    } 
+    const handlePrev = () => {
+        if (index > 0) {
+            setIndex(index - 1);
+        }
+    };
+    const word = props.words[index];
 
-const onShowNext = () => {
-    setPosition(position+1)
-}
+
 
     return(
         <div className={styles.game}>
         <div className= {styles.game__container}>
-            <button className={styles.game__button} onClick={onShowPrevious} >PREVIOUS</button>
+            <button className={styles.game__button} onClick={()=>{
+            if (pressed){
+                handleCheck();
+                handlePrev();
+            } else {
+                handlePrev();
+            }  }}> prev </button> 
             <div className={styles.container}>
-                {cards.map((card,id )=>
                     <Card 
-                    id={id} 
-                    english={card.english} 
-                    transcription= {card.transcription} 
-                    russian = {card.russian}
-                    tags = {card.tags}
-                    tags_json = {card.tags_json} />)}
+                    english={word.english} 
+                    transcription= {word.transcription} 
+                    russian = {word.russian}
+                    />
             </div>
-            <button className={styles.game__button} onClick={onShowNext}>NEXT</button>
+            <button className={styles.game__button} onClick={()=>{
+            if (pressed){
+                handleCheck();
+                handleNext();
+            } else {
+                handleNext();
+            }
+            }}>next</button>
             
         </div>
-        <div className={styles.game__learnt}>Words learnt: / </div>
+        <div className={styles.game__learnt}>Words learnt: / {data.length } </div>
         <div className={styles.game__swiper}>
         </div>
         </div>
 )}
     
-    
+// function CardsList(props){
+//     
+
+//     return (
+//         <div>
+//             <Card
+//                 english={word.english}
+//                 transcription={word.transcription}
+//                 russian={word.russian}
+//                 handleNext={handleNext}
+//                 handlePrev={handlePrev}
+//             />
+//         </div>
+//         );
+// }
+// export default CardsList;
+
+
+// function Card(props) {
+//     const [pressed, setPressed] = useState(false);
+//     const handleCheck = () => {  
+//         setPressed(!pressed);
+//         setTimeout(() => {
+//             setPressed(false);
+//         }, 4000);  
+//     } 
+//     return (
+//         <div className='cards'>
+//         <div className='btn'><button onClick={()=>{
+//             if (pressed){
+//                 handleCheck();
+//                 props.handlePrev();
+//             } else {
+//                 props.handlePrev();
+//             }
+//             }}>prev</button></div>
+//                 <div className='card'>
+//                     {pressed ? '' : <p className='cardTitle'>{props.english}</p>}
+//                     {pressed ? '' : <p className='cardTranscription'>{props.transcription}</p>}
+//                     {pressed ? <p className='cardTranslate'>{props.russian}</p> : <button onClick={handleCheck}>Проверить</button>}
+//                 </div>
+//         <div className='btn'><button onClick={()=>{
+//             if (pressed){
+//                 handleCheck();
+//                 props.handleNext();
+//             } else {
+//                 props.handleNext();
+//             }
+//             }}>next</button></div>    
+//         </div>
+//     );
+//     }
+// export default Card;
