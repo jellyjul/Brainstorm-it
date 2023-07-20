@@ -44,6 +44,8 @@ export default function Game(props){
                     english={word.english} 
                     transcription= {word.transcription} 
                     russian = {word.russian}
+                    showTranslate={handleCheck}
+                    isTranslateShow={pressed}
                     />
             </div>
             <button className={styles.game__button} onClick={()=>{
