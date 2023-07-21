@@ -5,6 +5,7 @@ import Home from '../Home/Home';
 import Footer from "../Footer/Footer"
 import Table from '../../pages/Table';
 import Game from '../../pages/Game';
+import NotFound from '../../pages/NotFound';
 import {Routes, Route} from 'react-router-dom'
 
 export default function App() {
@@ -21,9 +22,10 @@ export default function App() {
     <div className="App">
       <Header/>
       <Routes>
-        <Route path = '/table' element={<Table words={words} />}></Route>
-        <Route path = '/game' element={<Game words = {words}/>}></Route>
-        <Route path = '/' element={<Home/>}></Route>
+        <Route exact path = '/table' element={<Table words={words} />}></Route>
+        <Route exact path = '/game' element={<Game words = {words}/>}></Route>
+        <Route exact path = '/' element={<Home/>}></Route>
+        <Route exact path="*" element={<NotFound />} />
       </Routes>
       <Footer/>
     </div>
