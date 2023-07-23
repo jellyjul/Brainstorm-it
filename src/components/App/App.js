@@ -7,6 +7,7 @@ import Table from '../../pages/Table';
 import Game from '../../pages/Game';
 import NotFound from '../../pages/NotFound';
 import {Routes, Route} from 'react-router-dom'
+import {BrowserRouter} from "react-router-dom"
 
 export default function App() {
   const [words, setWords] = useState([]);
@@ -20,14 +21,16 @@ export default function App() {
   }
   return (
     <div className="App">
-      <Header/>
-      <Routes>
-        <Route exact path = '/table' element={<Table words={words} />}></Route>
-        <Route exact path = '/game' element={<Game words = {words}/>}></Route>
-        <Route exact path = '/' element={<Home/>}></Route>
-        <Route exact path="*" element={<NotFound />} />
-      </Routes>
-      <Footer/>
+      <BrowserRouter>
+        <Header/>
+          <Routes>
+            <Route exact path = '/table' element={<Table words={words} />}></Route>
+            <Route exact path = '/game' element={<Game words = {words}/>}></Route>
+            <Route exact path = '/' element={<Home/>}></Route>
+            <Route exact path="*" element={<NotFound />} />
+          </Routes>
+        <Footer/>
+      </BrowserRouter>
     </div>
 
   );
