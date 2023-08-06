@@ -1,12 +1,22 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
+import { apiWords } from '../Api';
 import 'bootstrap/dist/css/bootstrap.css';
 import diary from "../../images/diary.png" 
 import laptop from "../../images/laptop.png" 
 import puzzle from "../../images/puzzle.png"
 import styles from "../Home/home.module.scss"
 import {NavLink} from "react-router-dom"
+import TableRow from '../../pages/Table';
+
+import { Table } from "react-bootstrap";
 
 export default function Home() {
+    const [words, setWords] = useState([]);
+  useEffect(() => {
+    fetch(apiWords)
+      .then(response => response.json())
+      .then(data => setWords(data));
+  }, []);
 return (
     <div className={styles.home}>
         <div className={styles.home__background}>
@@ -46,6 +56,7 @@ return (
             <p>Practice with games</p>
             </div>
         </div>
+        <TableRow words={words}></TableRow>
     </div>
 )
 }

@@ -17,7 +17,7 @@ export default function TableRow (){
         </div>
         </div>
       {cards.map((card,id )=>
-      <TableLine id={card.id} 
+      <TableLine id={id} 
       english={card.english} 
       transcription= {card.transcription} 
       russian = {card.russian}
