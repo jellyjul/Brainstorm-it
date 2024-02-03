@@ -1,3 +1,13 @@
 @import "../../styles/vars.scss";
 @import "../../styles/mixins.scss";
 @import url("https://fonts.googleapis.com/css?family=Exo:400,700");
+
+.button {
+    @include button(10%, 10px);
+    color: white;
+
+    background-color: $button-light;
+}
+.button:hover {
+    transform: scale(1.2);
+}

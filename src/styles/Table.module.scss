@@ -64,3 +64,16 @@
 .table__cancel {
     background-color: $main-pink;
 }
+.error {
+    border-color: rgb(209, 45, 45);
+}
+
+.button_error {
+    width: 80%;
+    padding: 3px;
+    border: none;
+    border-radius: 15px;
+    font-size: 0.9em;
+    background-color: rgb(112, 111, 111);
+    color: #fff;
+}

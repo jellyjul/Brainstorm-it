@@ -35,14 +35,26 @@
 }
 
 .button {
-    @include button(65%, 15px);
+    @include button(85%, 15px);
     color: white;
-    margin-top: 50px;
+
     background-color: $button-green;
+}
+
+.translate {
+    display: flex;
+    justify-content: center;
+    margin: 5%;
 }
 .clicked {
     display: none;
 }
 .shownTranslation {
     display: none;
+}
+
+.animation {
+    min-height: 24rem;
+    transform: scale(1.2);
+    font-size: 0.8em;
 }

@@ -15,7 +15,7 @@ export default function TableRow (){
           <div>Edit</div>
           <div>Delete</div>
         </div>
-        </div>
+      </div>
       {cards.map((card,id )=>
       <TableLine id={id} 
       english={card.english} 

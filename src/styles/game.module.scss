@@ -1,9 +1,13 @@
+.game {
+    margin-top: 5%;
+    height: 50vh;
+}
 .game__container {
     margin: 0 15%;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 1000px;
+    // width: 1000px;
 }
 .container {
     display: flex;

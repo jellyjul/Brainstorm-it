@@ -1,119 +1,96 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "../components/Card/Card";
 import styles from "../styles/game.module.scss"
 import data from "../data/table-row.json"
 
 export default function Game(props){
+    const [learntAll, setLearntAll] = useState(false);
+    const [learntWordsIds, setLearntWordsIds] = useState([]);
+    const [wordsNumber, setWordsNumber] = useState(0);
 
-    const {cardIndex} = props;
-    const [index, setIndex] = useState (cardIndex ? cardIndex : 0); 
-    const [pressed, setPressed] = useState(false);
+    const [clickedTranslate, setClickedTranslate] = useState(false);
 
-    const handleNext = () => {
-        if (index < data.length - 1) {
-            setIndex(index + 1);
-        }
-    };
-    const handleCheck = () => {  
-        setPressed(!pressed);
+    const [wordStock, setWordStock] = useState(data);
+
+    const [index, setIndex] = useState(0);
+
+    const [animation, setAnimation] = useState(false);
+
+    useEffect (() => {
+        setAnimation(true)
         setTimeout(() => {
-            setPressed(false);
-        }, 4000);  
-    } 
-    const handlePrev = () => {
-        if (index > 0) {
-            setIndex(index - 1);
-        }
-    };
-    const word = props.words[index];
+        setAnimation(false)
+        }, 200);
+    },[index])
 
-
-
-    return(
-        <div className={styles.game}>
-        <div className= {styles.game__container}>
-            <button className={styles.game__button} onClick={()=>{
-            if (pressed){
-                handleCheck();
-                handlePrev();
-            } else {
-                handlePrev();
-            }  }}> prev </button> 
-            <div className={styles.container}>
-                    <Card 
-                    english={word.english} 
-                    transcription= {word.transcription} 
-                    russian = {word.russian}
-                    showTranslate={handleCheck}
-                    isTranslateShow={pressed}
-                    />
-            </div>
-            <button className={styles.game__button} onClick={()=>{
-            if (pressed){
-                handleCheck();
-                handleNext();
-            } else {
-                handleNext();
-            }
-            }}>next</button>
-            
-        </div>
-        <div className={styles.game__learnt}>Words learnt: / {data.length } </div>
-        <div className={styles.game__swiper}>
-        </div>
-        </div>
-)}
+    // переводим карточку и считаем переведенные карточки
+    const handleChange = () => {
+        setClickedTranslate (true);
+        handleCount(wordStock[index].id);
+    }
     
-// function CardsList(props){
-//     
+      // считаем количество выученных слов
+    const handleCount = (id) => {
+        const idsArr = [...learntWordsIds];
+        idsArr.push(id);
+        let result = [];
+    
+        idsArr.forEach((el)=>{
+            if (!result.includes(el)) {
+                result.push(el);
+            }
+        })
+    
+        setLearntWordsIds(result);
+        setWordsNumber(result.length)
+    
+        // проверяем, не выучены ли еще все слова
+        if (result.length === wordStock.length) {
+            setLearntAll(true)
+        }
+    }
 
-//     return (
-//         <div>
-//             <Card
-//                 english={word.english}
-//                 transcription={word.transcription}
-//                 russian={word.russian}
-//                 handleNext={handleNext}
-//                 handlePrev={handlePrev}
-//             />
-//         </div>
-//         );
-// }
-// export default CardsList;
+        // листаем карточки
+    const handleClick = (direction) => {
+        let newIndex = index;
 
+        (direction === 'next')
+        ? ++newIndex
+        : --newIndex;
 
-// function Card(props) {
-//     const [pressed, setPressed] = useState(false);
-//     const handleCheck = () => {  
-//         setPressed(!pressed);
-//         setTimeout(() => {
-//             setPressed(false);
-//         }, 4000);  
-//     } 
-//     return (
-//         <div className='cards'>
-//         <div className='btn'><button onClick={()=>{
-//             if (pressed){
-//                 handleCheck();
-//                 props.handlePrev();
-//             } else {
-//                 props.handlePrev();
-//             }
-//             }}>prev</button></div>
-//                 <div className='card'>
-//                     {pressed ? '' : <p className='cardTitle'>{props.english}</p>}
-//                     {pressed ? '' : <p className='cardTranscription'>{props.transcription}</p>}
-//                     {pressed ? <p className='cardTranslate'>{props.russian}</p> : <button onClick={handleCheck}>Проверить</button>}
-//                 </div>
-//         <div className='btn'><button onClick={()=>{
-//             if (pressed){
-//                 handleCheck();
-//                 props.handleNext();
-//             } else {
-//                 props.handleNext();
-//             }
-//             }}>next</button></div>    
-//         </div>
-//     );
-//     }
-// export default Card;
+        if (newIndex >= wordStock.length) {
+            newIndex = 0;
+        }
+
+        if (newIndex < 0) {
+            newIndex = wordStock.length-1;
+        }
+
+        setClickedTranslate(false);
+        setIndex(newIndex)
+    }
+
+    return (
+        <div className={styles.game}>
+            <div className= {styles.game__container}>
+                <button className={styles.game__button} onClick={() => handleClick('prev')}> prev </button> 
+                <div className={styles.container}>
+                    <Card 
+                        english = {wordStock[index].english} 
+                        transcription = {wordStock[index].transcription}
+                        russian = {wordStock[index].russian} 
+                        tag = {wordStock[index].tags}
+                        clickedTranslate = {clickedTranslate}
+                        handleChange = {handleChange}
+                        animation = {animation}
+                    />
+                </div>
+                <button className={styles.game__button} onClick={() => handleClick('next')}>next</button>
+            </div>
+            {learntAll
+                ? <div className={styles.game__learnt}>You've learnt all the words!</div>
+                : <div className={styles.game__learnt}>Words learnt: {wordsNumber} / {wordStock.length}</div>
+            }
+            </div>
+    )
+}
